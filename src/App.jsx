@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AddProducts from "./components/addproducts/AddProducts";
-import './app.css'
+import './App.css'
 import CardBody from "./components/cards/CardBody";
 import Search from "./components/search/Search";
 import Button from "./components/button/Button";
