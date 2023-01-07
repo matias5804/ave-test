@@ -5,18 +5,18 @@ import { FcLike } from "react-icons/fc";
 import { TbHeartBroken } from "react-icons/tb";
 import { exist } from "../../helpers/storage";
 
-const Card = ({ product, addItem, removeItem, addedItems }) => {
+const Card = ({ product, addItem }) => {
   const [isLoading, setLoading] = useState(false);
 
   const loading = () => {
     setLoading(true)
-    setInterval( () => setLoading(false), 300);
+    setInterval( () => setLoading(false), 500);
   }
-  
+
   return (
     <div key={product.id} className="card">
       <div className="div-image">
-        <img src={product.image} alt="" />
+        <img src={product.image} alt={product.title} />
       </div>
 
       <div className="card-description">
@@ -28,6 +28,7 @@ const Card = ({ product, addItem, removeItem, addedItems }) => {
         <div className="div-btn-card">
           {exist("favoritos", product) < 0 ? (
             <button
+              title='botón producto'
               className="btnCard"
               onClick={() => {
                 addItem(product);
