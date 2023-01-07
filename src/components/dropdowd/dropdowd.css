@@ -25,6 +25,7 @@
 .menu > li {
   margin: 0;
   background-color: white;
+  padding: 5px;
 }
 
 .menu > li:hover {
@@ -53,4 +54,21 @@
 .icon-list-menu:hover{
   transform: scale(1.25);
   transition-duration: 1s;
+}
+
+.div-li-dropdown{
+  display:flex;
+  gap:5px;
+  justify-content: space-between;
+}
+
+.div-li-dropdown button{
+  background: none;
+  border: none;
+  cursor:pointer;
+}
+
+.div-btn-drp{
+  display: flex;
+  gap: 5px;
 }

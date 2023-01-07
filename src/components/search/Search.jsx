@@ -1,12 +1,11 @@
 import './search.css'
 
-const Search = ({ value, onChangeData }) => {
+const Search = ({ onChangeData }) => {
   return (
     <input
       className='searchInput' 
       type="text" 
       placeholder="Buscar..."
-      value={value}
       onChange={onChangeData}
     />
   )

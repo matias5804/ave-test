@@ -1,22 +1,33 @@
 import React from 'react'
 import './dropdowd.css'
 import { GrUnorderedList } from "react-icons/gr"
+import { AiOutlineArrowDown } from "react-icons/ai"
+import { AiOutlineArrowUp } from "react-icons/ai"
 
-const DropdonwSelect = () => {
-    const handleMenuOne = () => {
-        console.log('clicked one');
-      };
-    
-      const handleMenuTwo = () => {
-        console.log('clicked two');
-      };
+
+
+const DropdonwSelect = ({orderName, orderPrice}) => {
     
       return (
         <Dropdown
-          trigger={ <GrUnorderedList size="1.5rem" className='icon-list-menu'/> }
-          menu={[
-            <button onClick={handleMenuOne}>Nombre</button>,
-            <button onClick={handleMenuTwo}>Precio</button>,
+        trigger={ <GrUnorderedList size="1.5rem" className='icon-list-menu'/> }
+        menu={[
+
+            <div className='div-li-dropdown'>
+              <h4>Nombre</h4> 
+              <div className='div-btn-drp'>
+                <button onClick={() => orderName(true)}><AiOutlineArrowUp/> </button>
+                <button onClick={() => orderName(false)}><AiOutlineArrowDown/></button>
+              </div>
+            </div>,
+
+            <div className='div-li-dropdown'>
+              <h4>Precio</h4> 
+              <div className="div-btn-drp">
+                <button onClick={() => orderPrice(true)}><AiOutlineArrowUp/> </button>
+                <button onClick={() => orderPrice(false)}><AiOutlineArrowDown/></button>
+              </div>
+            </div>
           ]}
         />
       );

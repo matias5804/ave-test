@@ -16,6 +16,7 @@
   align-items: center;
   height: 100px;
   font-size: medium;
+  z-index: 8;
 }
 
 .body-favorities{
@@ -23,7 +24,8 @@
 }
 
 .total-items{
-  margin-left: 20px;
+  margin-left: 10px;
+  padding: 0 5px;
 }
 
 @media (min-width:600px) {

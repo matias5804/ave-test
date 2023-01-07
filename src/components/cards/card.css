@@ -91,6 +91,10 @@
 .divCardBody{
     margin-top:100px;
 }
+.loading-btn{
+    margin: 0 auto;
+    padding: 15px;
+}
 
 /*---------------------------------------------------------*/
 /*inicio de los estilos a partir de los 600px*/

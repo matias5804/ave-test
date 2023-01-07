@@ -9,21 +9,26 @@ import Header from "./components/header/Header";
 import Dropdonw from "./components/dropdowd/Dropdonw";
 import Footer from "./components/footer/Footer";
 import BounceLoader from "react-spinners/BounceLoader";
+import { save, get } from "./helpers/storage";
 
 function App() {
 
   const [items, setItem] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
+  const [itmesFilters, setItemsFilters] = useState([]);
   const [addedItems, setAddedItem] = useState([]);
   const [showAddProducts, setShowAddProducts] = useState(false);
   const [loading, setLoading] = useState(false);
-  
+  const [favList, setFavList] = useState([]);
 
   useEffect(() => {
     setLoading(true)
+    setFavList(get('favoritos'));
     fetch("https://fakestoreapi.com/products/")
     .then((res) => res.json())
-    .then((data) => setItem(data));
+    .then((data) => {
+      setItem(data);
+      setItemsFilters(data);
+    });
 
     setTimeout(() => {
       setLoading(false);
@@ -45,24 +50,30 @@ function App() {
 
   /*--------------SEARCH-----------------------*/
   function changingSearchData(e) {
-    setSearchValue(e.target.value);
+    const data = items.filter( i => i.title.toLowerCase().includes(e.target.value.toLowerCase()));
+    setItemsFilters([...data]);
   }
 
-  const itmesFilter = items.filter((item) =>
-    item.title.toLowerCase().includes(searchValue.toLowerCase())
-  );
+  const handlerOrderByName = (desc) => {
+    let data = items.sort(
+      (p1, p2) => p1.title.localeCompare(p2.title));
+      if (desc) data = data.reverse();
+      setItemsFilters([...data]);
+  };
+
+  const handlerOrderByPrice = (desc) => {
+    let data = items.sort(
+      (p1, p2) => (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0);
+      if (desc) data = data.reverse();
+      setItemsFilters([...data]);
+  };
   /**------------------------------------------- */
 
-  /*-------------ADD FAVORITIES------------------*/
-  function addItem(item) {
-    item.addNumber = 1;
-    const itemArr = addedItems;
-    setAddedItem([...itemArr, item]);
-  }
 
-  function removeItem(item) {
-    const newItems = addedItems.filter((addedItem) => addedItem.id !== item.id);
-    setAddedItem(newItems);
+  /*-------------ADD producto ------------------*/
+  function saveProduct(product) {
+    save("favoritos", product);
+    setFavList(get('favoritos'));
   }
   /*----------------------------------------------*/
 
@@ -74,16 +85,15 @@ function App() {
             <Header/>
           </div>
           <div className="nav-div-input-btn">
-            <Dropdonw/>
+            <Dropdonw orderName={handlerOrderByName} orderPrice={handlerOrderByPrice}/>
             <Search
               products={items}
-              value={searchValue}
               onChangeData={changingSearchData}
-              />
+            />
             <Button 
-              num={addedItems.length} 
+              num={favList.length} 
               click={setShowAddProducts} 
-              /> 
+            /> 
           </div>
         </div>
       </div>
@@ -95,9 +105,9 @@ function App() {
       
       <div className="divCardBody">
         <CardBody
-          products={itmesFilter}
-          addItem={addItem}
-          removeItem={removeItem}
+          products={itmesFilters}
+          addItem={saveProduct}
+          removeItem={saveProduct}
           addedItems={addedItems}
           />
       </div>
@@ -106,7 +116,7 @@ function App() {
         <AddProducts
           click={setShowAddProducts}
           items={addedItems}
-          removeItem={removeItem}
+          removeItem={saveProduct}
           setAddedItem={setAddedItem}
         />
       )}
