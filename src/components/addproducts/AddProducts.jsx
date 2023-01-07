@@ -6,6 +6,7 @@ import { CgCloseO } from 'react-icons/cg'
 import { get, save } from "../../helpers/storage";
 
 const AddProducts = ({ items, click, removeItem, setAddedItem }) => {
+  
   const showDivRef = useRef(null);
   const [favList, setFavList] = useState([]);
 
@@ -17,7 +18,6 @@ const AddProducts = ({ items, click, removeItem, setAddedItem }) => {
     save("favoritos", product);
     setFavList(get('favoritos'));
   }
-  
   return (
     <div ref={showDivRef} className="container-favorities">
       <div className="header-favorities">

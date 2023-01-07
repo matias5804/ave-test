@@ -31,7 +31,7 @@ function App() {
 
     setTimeout(() => {
       setLoading(false);
-    },4000);
+    },5000);
   }, []);
 
   /*------------- LOCALSTORAGE --------------- */
