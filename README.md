@@ -34,7 +34,7 @@ Cuenta con:
 
 ## Funcionamiento de la App
 
-![Funcionamiento del Sitio Web](https://github.com/matias5804/)
+![Funcionamiento del Sitio Web](https://github.com/matias5804/ave-test/blob/main/src/funcionalidad.mp4)
 
 
 
