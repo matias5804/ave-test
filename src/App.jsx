@@ -90,7 +90,7 @@ function App() {
               onChangeData={changingSearchData}
             />
             <Button 
-              num={favList.length} 
+              //num={favList.length} 
               click={setShowAddProducts} 
             /> 
           </div>
