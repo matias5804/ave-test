@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./card.css";
 import { useState } from "react";
 import { FcLike } from "react-icons/fc";
 import { TbHeartBroken } from "react-icons/tb";
-import { save, exist } from "../../helpers/storage";
-
+import { exist } from "../../helpers/storage";
 
 const Card = ({ product, addItem, removeItem, addedItems }) => {
   const [isLoading, setLoading] = useState(false);
@@ -13,6 +12,7 @@ const Card = ({ product, addItem, removeItem, addedItems }) => {
     setLoading(true)
     setInterval( () => setLoading(false), 300);
   }
+  
   return (
     <div key={product.id} className="card">
       <div className="div-image">

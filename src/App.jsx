@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AddProducts from "./components/addproducts/AddProducts";
 import './app.css'
-
 import CardBody from "./components/cards/CardBody";
 import Search from "./components/search/Search";
 import Button from "./components/button/Button";
@@ -102,7 +101,6 @@ function App() {
           <BounceLoader  color="#36d7b7" />
         </div>
       ) : 
-      
       <div className="divCardBody">
         <CardBody
           products={itmesFilters}
@@ -120,7 +118,6 @@ function App() {
           setAddedItem={setAddedItem}
         />
       )}
-
       <Footer/>
     </div>
   );

@@ -95,9 +95,6 @@ body{
 }
 
 @media (min-width:1024px){
-    .nav-div-input-btn{
-
-    }
     .nav{
         justify-content: space-around;
         width: 900px;

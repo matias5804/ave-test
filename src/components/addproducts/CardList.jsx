@@ -3,7 +3,6 @@ import "./cardList.css";
 import { TbHeartBroken } from "react-icons/tb";
 
 function reducer(state, action) {
-  // console.log(state);
   if (action.type === "INCREASE") {
     return {
       ...state,
@@ -19,6 +18,7 @@ function reducer(state, action) {
     };
   }
 }
+
 const CardList = ({ item, removeItem, setAddedItem, itemsArr }) => {
   const [state, dispatch] = useReducer(reducer, item);
 

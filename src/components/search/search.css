@@ -11,6 +11,7 @@
         width: 150px;
     }
 }
+
 @media (min-width:1024px){
     .searchInput{
         width: 200px;
